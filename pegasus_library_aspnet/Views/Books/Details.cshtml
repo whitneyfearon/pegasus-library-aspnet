@@ -1,0 +1,66 @@
+﻿@model pegasus_library_aspnet.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+    <div class="container pt-3">
+        <div class="row">
+            <div class="col-sm">
+                <img src="~/images/@Html.DisplayFor(model => model.ImagePath)" />
+            </div>
+            <div class="col-sm">
+                <div class="border-bottom pb-4">
+                    <h4 class="color-change">@Html.DisplayFor(model => model.Title)</h4>
+                    by: <i class="green-text">@Html.DisplayFor(model => model.Author.FirstName) @Html.DisplayFor(model => model.Author.LastName) </i>
+                </div>
+                <div class="pt-4">
+                    <dl class="row">
+                        <dd class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.ISBN)
+                        </dd>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.ISBN)
+                        </dd>
+                        <dd class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.Title)
+                        </dd>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Title)
+                        </dd>
+                        <dd class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.Genre)
+                        </dd>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Genre.GenreName)
+                        </dd>
+                        <dd class="col-sm-7">
+                            @Html.DisplayNameFor(model => model.PublicationDate)
+                        </dd>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.PublicationDate)
+                        </dd>
+                        <dd class="col-sm-5">
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </dd>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Quantity)
+                        </dd>
+                        <dd class="col-sm-6">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dd>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+                    </dl>
+                </div>
+                <h4 class="color-change">@Html.DisplayFor(model => model.Price)</h4>
+            </div>
+        </div>
+        <div class="modal-footer border-0">
+            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+    </div>

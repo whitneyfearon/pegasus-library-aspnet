@@ -1,0 +1,41 @@
+﻿@model pegasus_library_aspnet.Models.Genre
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="pt-4">
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header alert-success p-4">
+                EDIT GENRE
+            </div>
+            <form asp-action="Edit">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="GenreName" class="control-label"></label>
+                        <input asp-for="GenreName" class="form-control" />
+                        <span asp-validation-for="GenreName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer alert-success">
+                    <div class="row">
+                        <div class="form-group col">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

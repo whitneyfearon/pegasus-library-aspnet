@@ -1,0 +1,26 @@
+﻿@model pegasus_library_aspnet.Models.Genre
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="card w-50 border-0 pt-3">
+    <div class="card-header border-0 alert-success">
+        GENRE DETAILS
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-5">
+                @Html.DisplayNameFor(model => model.GenreName)
+            </dt>
+            <dd class="col-sm-7">
+                @Html.DisplayFor(model => model.GenreName)
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer border-0 text-right">
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

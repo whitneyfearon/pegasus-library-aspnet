@@ -1,0 +1,118 @@
+﻿@model IEnumerable<pegasus_library_aspnet.Models.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="row pt-4 font-weight-bold">
+    <h5 class="col color-change">
+        ALL BOOKS
+    </h5>
+    <h5 class="col">
+        <a asp-action="Create" class="float-right color-change">ADD A NEW BOOK</a>
+    </h5>
+</div>
+
+
+<div class="table-responsive">
+    <div class="col-12-md ">
+        <table class="table table-hover table-bordered">
+            <thead class="table-success text-nowrap">
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ISBN)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PublicationDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ImagePath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Author)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Genre)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="btn-group btn-group-sm " role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id"><span class="fas fa-edit"></span> Edit</a>
+                                    <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id"><span class="fas fa-info-circle"> </span> Details</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id"><span class="fas fa-trash-alt"></span> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ISBN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PublicationDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            <img align="middle" src="~/images/@Html.DisplayFor(modelItem => item.ImagePath)" style="width: 200px; height: 300px" />
+                            @*@if (item.ImagePath != null)
+                                {
+                                    <img align="middle" src="~/images/@Html.DisplayFor(modelItem => item.ImagePath)" style="width: 200px; height: 200px" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/no_image.jpg" style="width: 200px; height: 200px" />
+                                }*@
+
+                            @* <br/>
+                                ---------------
+                                <a href="/Books/details/@item.Id">
+                                    <img align="middle" src="~/images/@item.ImagePath" style="width: 100px; height: 100px" />
+                                </a>*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author.FirstName)
+                            @Html.DisplayFor(modelItem => item.Author.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Genre.GenreName)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

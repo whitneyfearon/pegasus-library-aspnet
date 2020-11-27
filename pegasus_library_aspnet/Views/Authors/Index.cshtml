@@ -1,0 +1,60 @@
+﻿@model IEnumerable<pegasus_library_aspnet.Models.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row pt-4 font-weight-bold">
+    <h5 class="col color-change">
+        ALL AUTHORS
+    </h5>
+    <h5 class="col">
+        <a asp-action="Create" class="float-right color-change">ADD A NEW AUTHOR</a>
+    </h5>
+</div>
+
+
+<div class="table-responsive">
+    <div class="col-12-md ">
+        <table class="table table-hover table-bordered">
+            <thead class="table-success text-nowrap">
+                <tr>
+                    <th></th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="btn-group btn-group-sm " role="group">
+                                <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Action
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                    <a class="dropdown-item" asp-action="Edit" asp-route-id="@item.Id"><span class="fas fa-edit"></span> Edit</a>
+                                    <a class="dropdown-item" asp-action="Details" asp-route-id="@item.Id"><span class="fas fa-info-circle"> </span> Details</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-action="Delete" asp-route-id="@item.Id"><span class="fas fa-trash-alt"></span> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
